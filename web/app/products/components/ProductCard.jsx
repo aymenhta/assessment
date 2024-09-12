@@ -3,12 +3,13 @@ import Link from "next/link";
 
 export default function ProductCard({ product }) {
     return (
-        <>
-            <Image src={product.image} width={30} height={30} alt="product image" />
-            <Link href={`/products/${product.id}`} className="text-xl font-semibold block">{product.title}</Link>
-            <span>price: {product.price}$</span>
-            <span>category: {product.category}</span>
-            <p>{product.description.slice(0, 150)}...</p>
-        </>
+        <div className="flex items-center justify-center border px-2">
+                <Image src={product.image} width={100} height={100} alt="product image" />
+            <div className="ml-8">
+                <Link href={`/products/${product.id}`} className="text-lg font-semibold block">{product.title}</Link>
+                <p>price: {product.price}$</p>
+                <p>category: {product.category}</p>
+            </div>
+        </div>
     )
 }

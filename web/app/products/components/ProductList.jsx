@@ -30,14 +30,10 @@ export default function ProductList() {
         <section>
             <h1 className="text-3xl font-bold text-center">Products list</h1>
             <hr />
-            <div className="grid grid-cols-3 gap-5">
-                {products
+            <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-8 lg:grid-cols-3 mt-5">
+                {products && products.length > 0
                     ? (
-                        products.map((p) => (
-                            <div key={p.id}>
-                                <ProductCard product={p} />
-                            </div>
-                        ))
+                        products.map((p) => <ProductCard key={p.id} product={p} />)
                     )
                     :
                     <p>There are no products at the moment :/</p>}
