@@ -6,3 +6,19 @@
 .page__container {
     @apply my-0 mx-auto w-10/12 max-w-screen-xl
 }
+
+.btn {
+    @apply py-2 px-3 font-medium border rounded-md shadow-sm transition-all
+}
+
+.btn__danger {
+    @apply text-white bg-red-600 hover:bg-red-500 border-red-600 
+}
+
+.btn__primary {
+    @apply text-white bg-slate-950 hover:bg-slate-900 border-slate-950
+}
+
+.btn__secondary {
+    @apply text-black bg-white hover:bg-slate-100 border-slate-950
+}

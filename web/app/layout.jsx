@@ -3,6 +3,7 @@ import "./globals.css";
 
 // components
 import Navbar from "@/components/Navbar";
+import SessionWrapper from "@/components/SessionWrapper";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -16,15 +17,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={poppins.className}
-      >
-        <main className="page__container">
-          <Navbar />
-          {children}
-        </main>
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body
+          className={poppins.className}
+        >
+          <main className="page__container">
+            <Navbar />
+            {children}
+          </main>
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }
