@@ -60,14 +60,14 @@ export default function ProductList() {
         <>
             <Search onSearch={handleSearch} categories={categories} />
 
-            <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-8 lg:grid-cols-3 mt-5">
-                {filteredProducts && filteredProducts.length > 0
-                    ? (
-                        filteredProducts.map((p) => <ProductCard key={p.id} product={p} />)
-                    )
-                    :
-                    <p>There are no products at the moment :/</p>}
-            </div>
+            {filteredProducts && filteredProducts.length > 0
+                ? (
+                    <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-8 lg:grid-cols-3 mt-5">
+                        {filteredProducts.map((p) => <ProductCard key={p.id} product={p} />)}
+                    </div>
+                )
+                :
+                <p className="text-center text-slate-600 mt-5">There are no products at the moment :/</p>}
         </>
     )
 }

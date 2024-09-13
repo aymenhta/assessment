@@ -26,5 +26,5 @@
 }
 
 .btn__secondary {
-    @apply text-black bg-white hover:bg-slate-100 border-slate-950
+    @apply text-black bg-white hover:bg-zinc-50 border-slate-950
 }

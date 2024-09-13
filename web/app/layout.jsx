@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
   return (
     <SessionWrapper>
       <html lang="en">
-        <body className="bg-gray-100">
+        <body className="bg-zinc-50">
           {session ? (
             <main className="page__container">
               <Navbar />

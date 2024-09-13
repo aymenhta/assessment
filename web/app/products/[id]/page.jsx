@@ -8,7 +8,7 @@ async function getProduct(id) {
         let res = await fetch(`https://fakestoreapi.com/products/${id}`, {
             signal: AbortSignal.timeout(10000),
             next: {
-                revalidate: 20
+                revalidate: 60 * 60 * 12 // every 12 hours
             }
         })
 

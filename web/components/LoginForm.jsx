@@ -100,7 +100,7 @@ export default function LoginForm() {
 
                         <div>
                             <button type="submit"
-                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="btn btn__primary w-full">
 
                                 Sign in
                             </button>
@@ -122,14 +122,14 @@ export default function LoginForm() {
                         <div class="mt-6 grid grid-cols-2 gap-3">
                             <div>
                                 <button onClick={() => signIn('github')}
-                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-zinc-50">
                                     <img class="h-6 w-6" src="/icons/github.svg"
                                         alt="" />
                                 </button>
                             </div>
                             <div>
                                 <button onClick={() => signIn('google')}
-                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-zinc-50">
                                     <img class="h-6 w-6" src="/icons/google.svg"
                                         alt="" />
                                 </button>

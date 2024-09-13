@@ -21,7 +21,7 @@ export default function Navbar() {
                 src={session.user?.image || '/images/default_avatar.jpeg'} alt="profile image" width={30} height={30} />
               <span className="font-semibold">{session.user?.name}</span>
             </div>
-            <button className="btn btn__danger" onClick={() => signOut()}>Logout</button>
+            <button className="btn btn__secondary" onClick={() => signOut()}>Logout</button>
           </>
         )}
 
