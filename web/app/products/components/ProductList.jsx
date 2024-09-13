@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import SearchForm from "@/components/SearchForm";
+import Search from "@/components/Search";
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+
 
     const fetchData = async () => {
         try {
@@ -17,6 +19,13 @@ export default function ProductList() {
             const products = await res.json();
             setProducts(products);
             setFilteredProducts(products);
+
+            res = await fetch("https://fakestoreapi.com/products/categories", {
+                signal: AbortSignal.timeout(6000), // 6 seconds timeout
+            });
+            const categories = await res.json();
+            setCategories(categories);
+
         } catch (error) {
             console.log(error);
         }
@@ -27,19 +36,29 @@ export default function ProductList() {
         fetchData();
     }, []);
 
-    // Filter data when the user provide filtering data
-    function handleSearch(query) {
-        // since the fakestoreapi doesn't provide a searching mecanism
-        // we have to perform client side filtering
-        const filtered = products.filter(p =>
-            p.title.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredProducts(filtered);
-    }
+    // Handle search and category change from the SearchComponent
+    function handleSearch({ searchVal, selectedCategory }) {
+        let filtered = products;
+
+
+        // Filter by search query
+        if (searchVal) {
+            filtered = filtered.filter(p =>
+                p.title.toLowerCase().includes(searchVal.toLowerCase())
+            );
+        }
+
+        // Filter by selected category
+        if (selectedCategory) {
+            filtered = filtered.filter(p => p.category === selectedCategory);
+        }
+
+        setFilteredProducts(filtered); // Set filtered products
+    };
 
     return (
         <>
-            <SearchForm onSearch={handleSearch} />
+            <Search onSearch={handleSearch} categories={categories} />
 
             <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-8 lg:grid-cols-3 mt-5">
                 {filteredProducts && filteredProducts.length > 0
