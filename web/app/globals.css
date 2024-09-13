@@ -4,7 +4,7 @@
 
 
 .page__container {
-    @apply my-0 mx-auto w-10/12 max-w-screen-xl
+    @apply my-0 mx-auto w-10/12 max-w-screen-xl h-screen
 }
 
 .btn {

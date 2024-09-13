@@ -6,19 +6,11 @@ export default async function middleware(req) {
     const res = NextResponse.next();
     const session = await getToken({ req }); 
 
-    const unprotectedRoutes = ['/'];
-
     // Get the pathname from the request URL
     const { pathname } = req.nextUrl;
 
     // Check if the user is authenticated
-    if (session) {
-        // User is logged in
-        // Redirect to a /products if accessing an unprotected route
-        if (unprotectedRoutes.includes(pathname)) {
-            return NextResponse.redirect(new URL('/products', req.url));
-        }
-    } else {
+    if (!session) {
         // User is not logged in, redirect to the home pagee if accessing protected routes
         const protectedRoutes = ['/products', '/products/'];
         if (protectedRoutes.some(route => pathname.startsWith(route))) {

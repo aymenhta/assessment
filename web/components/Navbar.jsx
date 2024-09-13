@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -13,24 +13,17 @@ export default function Navbar() {
         <Link href="/" className="text-xl font-semibold">Brand</Link>
       </div>
       <div className="flex items-center justify-center gap-x-3">
-        {session ? (
+        {session && (
           <>
             <div className="flex items-center justify-center gap-x-2">
               <Image 
                 className="rounded-md "
-                src={session.user?.image} alt="profile image" width={30} height={30} />
+                src={session.user?.image || '/images/default_avatar.jpeg'} alt="profile image" width={30} height={30} />
               <span className="font-semibold">{session.user?.name}</span>
             </div>
             <button className="btn btn__danger" onClick={() => signOut()}>Logout</button>
           </>
-        ) : (
-          <>
-              <button className="btn btn__primary" onClick={() => signIn('github')}>Sign-in with github</button>
-              <button className="btn btn__secondary" onClick={() => signIn('google')}>Sign-in with google</button>
-          </>
         )}
-
-
 
       </div>
     </nav >

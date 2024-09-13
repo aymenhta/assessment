@@ -1,7 +1,15 @@
-export default function Home() {
+import LoginForm from "@/components/LoginForm";
+import { authOptions } from "@/lib/authOptions";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect('/products');
+  }
   return (
-      <h1 className="text-5xl font-bold text-center">
-        You must login
-      </h1>
+      <LoginForm />
   );
 }
