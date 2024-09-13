@@ -45,47 +45,99 @@ export default function LoginForm() {
     }
 
     return (
-        <section className="w-full h-4/5 bg-gray-300 flex flex-col justify-center items-center"> 
-            <form className="w-1/2 flex flex-col items-center justify-center" onSubmit={handleSubmit(onSubmit)}>
-                <legend className="text-4xl font-semibold">Login</legend>
+        <div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+            <div class="sm:mx-auto sm:w-full sm:max-w-md">
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    Sign in to your account
+                </h2>
                 {isInvalidAttempt && (
                     <div className="px-3 py-3 rounded-md border-2 border-red-600 bg-red-200 my-2">
                         <span className="text-red-600 font-medium">Invalid Credentials</span>
                     </div>
                 )}
-                <div className="my-2">
-                    <label htmlFor="username" className="block mb-1.5">Username <span className="text-red-600">*</span></label>
-                    <input
-                        {...register('username')}
-                        id="username"
-                        className={
-                            `py-1 px-3 rounded-sm shadow border-2 ${errors.username
-                                ? 'border-red-600'
-                                : 'border-slate-950'}`} />
-                    {errors.username?.message && <p className="text-red-600">{errors.username?.message}</p>}
-                </div>
-                <div className="my-2">
-                    <label htmlFor="password" className="block mb-1.5">Password <span className="text-red-600">*</span></label>
-                    <input
-                        {...register('password')}
-                        id="password"
-                        className={
-                            `py-1 px-3 rounded-sm shadow border-2 ${errors.password
-                                ? 'border-red-600'
-                                : 'border-slate-950'}`} />
-                    {errors.password?.message && <p className="text-red-600">{errors.password?.message}</p>}
-                </div>
-                <div className="mt-5">
-                    <input className="btn btn__primary cursor-pointer" type="submit" value="Login" />
-                    <input className="btn btn__secondary cursor-pointer" type="reset" value="Reset" />
-                </div>
-            </form>
-
-            {/* OAUTH */}
-            <div>
-                <button className="btn btn__primary" onClick={() => signIn('github')}>Sign-in with github</button>
-                <button className="btn btn__secondary" onClick={() => signIn('google')}>Sign-in with google</button>
             </div>
-        </section>
+
+            <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                    <form class="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                        <div>
+                            <label for="username" class="block text-sm font-medium text-gray-700">
+                                Username
+                            </label>
+                            <div class="mt-1">
+                                <input
+                                    {...register('username')}
+                                    id="username"
+                                    className={
+                                        `appearance-none rounded-md relative block w-full
+                                        px-3 py-2 placeholder-gray-500 text-gray-900 
+                                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 
+                                        sm:text-sm border ${errors.username
+                                            ? 'border-red-600'
+                                            : 'border-gray-300'}`} />
+                                {errors.username?.message && <p className="text-red-600">{errors.username?.message}</p>}
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700">
+                                Password
+                            </label>
+                            <div class="mt-1">
+                                <input
+                                    {...register('password')}
+                                    id="password" type="password"
+                                    className={
+                                        `appearance-none rounded-md relative block w-full
+                                        px-3 py-2 placeholder-gray-500 text-gray-900 
+                                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 
+                                        sm:text-sm border ${errors.password
+                                            ? 'border-red-600'
+                                            : 'border-gray-300'}`} />
+                                {errors.password?.message && <p className="text-red-600">{errors.password?.message}</p>}
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                    <div class="mt-6">
+
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-gray-100 text-gray-500">
+                                    Or continue with
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-2 gap-3">
+                            <div>
+                                <button onClick={() => signIn('github')}
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    <img class="h-6 w-6" src="/icons/github.svg"
+                                        alt="" />
+                                </button>
+                            </div>
+                            <div>
+                                <button onClick={() => signIn('google')}
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    <img class="h-6 w-6" src="/icons/google.svg"
+                                        alt="" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
