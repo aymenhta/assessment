@@ -1,4 +1,5 @@
 import ProductList from "@/app/products/components/ProductList"
+import SearchForm from "@/components/SearchForm";
 
 export const metadata = {
   title: "Products list",
