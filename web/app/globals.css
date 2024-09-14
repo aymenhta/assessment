@@ -28,3 +28,25 @@
 .btn__secondary {
     @apply text-black bg-white hover:bg-zinc-50 border-slate-950
 }
+
+
+
+.pagination__controls {
+    @apply flex gap-[10px] mt-[20px] justify-center items-center my-8
+}
+
+.pagination__controls button {
+    @apply py-[5px] px-[10px] border border-slate-600 bg-white shadow-sm cursor-pointer rounded-md transition-all
+}
+
+.pagination__controls button.active {
+    @apply bg-slate-950 text-white
+}
+
+.pagination__controls button:hover {
+    @apply bg-zinc-200
+}
+
+.pagination__controls button.active:hover {
+    @apply bg-slate-900 text-white
+}

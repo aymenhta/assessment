@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
 import Search from "@/components/Search";
-
+import PaginationComponent from "@/components/PaginationComponent";
+import ProductCard from "./ProductCard";
 export default function ProductList() {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -59,15 +59,7 @@ export default function ProductList() {
     return (
         <>
             <Search onSearch={handleSearch} categories={categories} />
-
-            {filteredProducts && filteredProducts.length > 0
-                ? (
-                    <div className="grid grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-x-8 lg:grid-cols-3 mt-5">
-                        {filteredProducts.map((p) => <ProductCard key={p.id} product={p} />)}
-                    </div>
-                )
-                :
-                <p className="text-center text-slate-600 mt-5">There are no products at the moment :/</p>}
+            <PaginationComponent data={filteredProducts} itemsPerPage={6} IterationComponent={ProductCard} />
         </>
     )
 }
