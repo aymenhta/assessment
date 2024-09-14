@@ -44,7 +44,7 @@ const PaginationComponent = ({ data, itemsPerPage, IterationComponent }) => {
                     ))}
                 </div>
             ) : [
-                <p className="text-center text-slate-600 mt-5">There are no products at the moment :/</p>
+                <p className="text-center text-slate-600 mt-5">could not find any products</p>
             ]}
 
 

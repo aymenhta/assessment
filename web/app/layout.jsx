@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import Navbar from "@/components/Navbar";
 import SessionWrapper from "@/components/SessionWrapper";
-
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Products application",
@@ -18,6 +18,8 @@ export default async function RootLayout({ children }) {
     <SessionWrapper>
       <html lang="en">
         <body className="bg-zinc-50">
+          <Toaster position="top-center" />
+
           {session ? (
             <main className="page__container">
               <Navbar />

@@ -27,7 +27,7 @@ export default function Search({ onSearch, categories, debounceDelay = 300 }) {
     };
 
     return (
-        <div className="w-full flex justify-center items-center gap-x-3">
+        <div className=" flex justify-center items-center gap-x-3">
             <input
                 type="search"
                 value={searchVal}
@@ -39,8 +39,7 @@ export default function Search({ onSearch, categories, debounceDelay = 300 }) {
                                         sm:text-sm border border-gray-300"
             />
 
-            <select value={selectedCategory} onChange={handleCategoryChange}
-                className="bg-slate-950 text-white font-semibold py-2 px-3 rounded-md">
+            <select value={selectedCategory} onChange={handleCategoryChange}>
                 <option value="">All Categories</option>
                 {categories.map((category, index) => (
                     <option key={index} value={category}>
