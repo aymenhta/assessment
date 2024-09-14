@@ -43,9 +43,9 @@ const PaginationComponent = ({ data, itemsPerPage, IterationComponent }) => {
                         <IterationComponent key={item.id} item={item} />
                     ))}
                 </div>
-            ) : [
+            ) : (
                 <p className="text-center text-slate-600 mt-5">could not find any products</p>
-            ]}
+            )}
 
 
             {/* Pagination Controls */}

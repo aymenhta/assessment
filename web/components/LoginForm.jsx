@@ -5,23 +5,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import { toast } from 'react-hot-toast';
 
-const formSchema = z.object({
-    "username": z.string().min(1, { message: "username must be provided" }),
-    "password": z.string().min(1, { message: "password must be provided" })
-})
 
 export default function LoginForm() {
-    const { register,
-        handleSubmit,
-        formState: { errors } } = useForm({
-            resolver: zodResolver(formSchema),
-            defaultValues: {
-                username: "",
-                password: ""
-            }
-        });
+
+    const formSchema = z.object({
+        "username": z.string().min(1, { message: "username must be provided" }),
+        "password": z.string().min(1, { message: "password must be provided" })
+    })
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            username: "",
+            password: ""
+        }
+    });
 
     const router = useRouter();
 
@@ -109,15 +110,15 @@ export default function LoginForm() {
                             <div>
                                 <button onClick={() => signIn('github')}
                                     className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-zinc-50">
-                                    <img className="h-6 w-6" src="/icons/github.svg"
-                                        alt="" />
+                                    <Image width={24} height={24}  src="/icons/github.svg"
+                                        alt="sign in with github" />
                                 </button>
                             </div>
                             <div>
                                 <button onClick={() => signIn('google')}
                                     className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-zinc-50">
-                                    <img className="h-6 w-6" src="/icons/google.svg"
-                                        alt="" />
+                                    <Image width={24} height={24} src="/icons/google.svg"
+                                        alt="sign in with google" />
                                 </button>
                             </div>
                         </div>

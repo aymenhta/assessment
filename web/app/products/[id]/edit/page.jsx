@@ -2,7 +2,7 @@ import EditProductForm from '../../components/EditProductForm';
 import getProduct from "@/lib/helpers";
 
 export async function generateMetadata({ params }) {
-    const product = await getProduct(params.id);
+    const product = await getProduct(params.id, false);
 
     return {
         title: `Edit ${product.title}`,
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
 
 
 export default async function EditProduct({ params }) {
-    const product = await getProduct(params.id);
+    const product = await getProduct(params.id, false);
     return (
         <EditProductForm product={product} />
     )

@@ -29,7 +29,7 @@ export default function DeleteProductComponent({ product }) {
         <section className="mt-5">
             <h1 className="text-3xl font-bold">Warning: This action is irreversible!</h1>
             <p>
-                Are you sure you want to delete <span className="font-semibold">'{product.title}'</span> ?? Once deleted, all 
+                Are you sure you want to delete <span className="font-semibold">&apos;{product.title}&apos;</span> ?? Once deleted, all 
                 associated data will be permanently removed and cannot be recovered. 
                 Please double-check to ensure that you want to proceed with this action.
             </p>

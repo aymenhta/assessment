@@ -2,7 +2,7 @@ import getProduct from "@/lib/helpers";
 import DeleteProductComponent from "@/app/products/components/DeleteProductComponent";
 
 export async function generateMetadata({ params }) {
-    const product = await getProduct(params.id);
+    const product = await getProduct(params.id, true);
 
     return {
         title: `Delete ${product.title}`,
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
 
 
 export default async function DeleteProduct({ params }) {
-    const product = await getProduct(params.id);
+    const product = await getProduct(params.id, true);
 
     return (
         <DeleteProductComponent product={product} />

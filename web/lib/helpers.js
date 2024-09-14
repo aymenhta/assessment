@@ -1,9 +1,9 @@
-export default async function getProduct(id) {
+export default async function getProduct(id, cachable) {
     try {
         let res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-            signal: AbortSignal.timeout(6000),
+            signal: AbortSignal.timeout(10000), // 10 seconds
             next: {
-                revalidate: 60 * 60 * 12 // every 12 hours
+                revalidate: cachable ? 60 * 60 * 12 : 0
             }
         });
 
