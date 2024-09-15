@@ -5,8 +5,7 @@ import Search from "@/components/Search";
 import PaginationComponent from "@/components/PaginationComponent";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
-export default function ProductList() {
-    const [products, setProducts] = useState([]);
+export default function ProductList({ products } ) {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true); // State to track loading
@@ -15,12 +14,12 @@ export default function ProductList() {
     const fetchData = async () => {
         try {
             setLoading(true);
-            let res = await fetch("https://fakestoreapi.com/products", {
-                signal: AbortSignal.timeout(6000), // 6 seconds timeout
-            });
+            // let res = await fetch("https://fakestoreapi.com/products", {
+            //     signal: AbortSignal.timeout(6000), // 6 seconds timeout
+            // });
 
-            const products = await res.json();
-            setProducts(products);
+            // const products = await res.json();
+            // setProducts(products);
             setFilteredProducts(products);
 
             res = await fetch("https://fakestoreapi.com/products/categories", {
@@ -38,7 +37,7 @@ export default function ProductList() {
 
     // Fetch data when component mounts
     useEffect(() => {
-        fetchData();
+            fetchData();
     }, []);
 
     // Handle search and category change from the SearchComponent

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import getProduct from "@/lib/helpers";
+import {getProduct} from "@/lib/helpers";
 
 export async function generateMetadata({ params }) {
     const product = await getProduct(params.id, true);

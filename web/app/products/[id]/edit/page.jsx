@@ -1,5 +1,5 @@
 import EditProductForm from '../../components/EditProductForm';
-import getProduct from "@/lib/helpers";
+import {getProduct} from "@/lib/helpers";
 
 export async function generateMetadata({ params }) {
     const product = await getProduct(params.id, false);

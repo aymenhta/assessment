@@ -1,4 +1,4 @@
-import getProduct from "@/lib/helpers";
+import {getProduct} from "@/lib/helpers";
 import DeleteProductComponent from "@/app/products/components/DeleteProductComponent";
 
 export async function generateMetadata({ params }) {
