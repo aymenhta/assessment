@@ -77,6 +77,6 @@ pnpm start
 
 ## Optimizations
 
-1. Lower Payload Size Equals Lower Latency: Due to the limitations of the fakestoreapi functionality, I had to fetch the entire product list from the server. When the product list is large, this can lead to performance issues. To address this, I implemented client-side searching and pagination. Since I don't have control over the server, I utilized caching for a specific duration to avoid hitting the server every time the component renders. A more effective solution would be for the backend REST API to offer flexible resource options, such as allowing requests like fakestoreapi.com?page=1&size=5&sort=-id.
+1. **Lower Payload Size Equals Lower Latency:** Due to the limitations of the fakestoreapi functionality, I had to fetch the entire product list from the server. When the product list is large, this can lead to performance issues. To address this, I implemented client-side searching and pagination. Since I don't have control over the server, I utilized caching for a specific duration to avoid hitting the server every time the component renders. A more effective solution would be for the backend REST API to offer flexible resource options, such as allowing requests like fakestoreapi.com?page=1&size=5&sort=-id.
 
-2. Image Optimization: Next.js provides built-in image optimization capabilities when the Sharp package is installed. This feature allows for efficient image handling out of the box.
+2. **Image Optimization:** Next.js provides built-in image optimization capabilities when the Sharp package is installed. This feature allows for efficient image handling out of the box.
