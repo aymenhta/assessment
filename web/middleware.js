@@ -1,7 +1,6 @@
 import { getToken } from 'next-auth/jwt'; 
 import { NextResponse } from 'next/server';
 
-// TODO: write documentation
 export default async function middleware(req) {
     const res = NextResponse.next();
     const session = await getToken({ req }); 
